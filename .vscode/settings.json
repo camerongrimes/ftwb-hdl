@@ -1,0 +1,6 @@
+{
+    "files.exclude": {
+        "**/.mpf": true,
+        "**/.vcd ": true
+    }
+}
