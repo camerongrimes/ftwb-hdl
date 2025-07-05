@@ -5,12 +5,14 @@ module tb_counter;
     logic clk;
     logic rst_n;
     logic [32:0] count;
+    logic toggle;
 
     // Instantiate the counter
     counter uut (
         .clk(clk),
         .rst_n(rst_n),
-        .count(count)
+        .count(count),
+        .toggle(toggle)
     );
 
     // Clock generation: 10ns period
