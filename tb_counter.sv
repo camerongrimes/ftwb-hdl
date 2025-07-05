@@ -4,7 +4,7 @@ module tb_counter;
 
     logic clk;
     logic rst_n;
-    logic [3:0] count;
+    logic [32:0] count;
 
     // Instantiate the counter
     counter uut (
@@ -28,7 +28,7 @@ module tb_counter;
         #10 rst_n = 1;
 
         // Let the simulation run for some time
-        #100;
+        #200
 
         $finish;
     end
