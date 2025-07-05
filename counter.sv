@@ -1,28 +1,36 @@
-module counter (
+module counter 
+(
     input  logic clk,
     input  logic rst_n,
-    output logic [31:0] count,
+	input  logic [3:0] speed,
     output logic toggle
 );
 
-    reg [31:0] clockFreq = 5;
+    localparam logic [31:0] clockFreq = 50_000_000;
 
-    always_ff @(posedge clk or negedge rst_n) begin
-        if (!rst_n)
-            count <= 4'd0;
-        else
-            count <= count + 1;
-    end
+    logic [31:0] count;
 
-    always_ff @(posedge clk or negedge rst_n) begin
-        if (count == clockFreq) begin
-            if(toggle == 1)
-                toggle <= 0;
+    always_ff @(posedge clk or negedge rst_n) 
+        begin
+            // If reset stop counting and disable toggle.
+            if (!rst_n) 
+                begin
+                    count <= 0;
+                    toggle <= 0;
+                end
             else
-                toggle <= 1;
-
-            count <= 0;
+                begin
+                    // Toggle LED if clockFreq / speed value met.
+                    if (count == clockFreq / speed) 
+                        begin
+                            toggle <= ~toggle;
+                            count <= 0;
+                        end
+                    // Otherwise continue the count.
+                    else 
+                        begin
+                            count <= count + 1;
+                        end
+                end
         end
-    end
-
 endmodule
