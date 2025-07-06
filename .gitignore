@@ -1,0 +1,46 @@
+# Keep the .gitignore file tracked
+!.gitignore
+
+
+
+# But keep SystemVerilog and do files
+!*.sv
+!*.do
+
+# Ignore Quartus project and output files
+*.qpf
+*.qsf
+*.pin
+*.sof
+*.pof
+*.jdi
+*.jrd
+*.sld
+*.qar
+*.rpt
+*.rbf
+*.pdb
+
+# Ignore ModelSim and simulation output files
+*.mpf
+*.cr.mti
+work
+*.wlf
+*.vcd
+*.jou
+*.log
+*.vsim
+*.do.*
+*.wlf.*
+transcript
+
+# Ignore VS Code workspace settings
+.vscode/
+
+# Ignore work directory (ModelSim compiled libraries)
+work/!.gitignore
+
+
+# Except these files:
+!*.sv
+!*.do
